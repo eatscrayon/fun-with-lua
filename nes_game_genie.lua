@@ -1,8 +1,8 @@
 local grimoire = {
-	['A']=  0x0,['P']=  0x1,['Z']=  0x2,['L']=  0x3,['G']=  0x4,['I']=  0x5,['T']=  0x6,['Y']=  0x7,
-	['E']=  0x8,['O']=  0x9,['X']=  0xA,['U']=  0xB,['K']=  0xC,['S']=  0xD,['V']=  0xE,['N']=  0xF,
-	[0x0]=  'A',[0x1]=  'P',[0x2]=  'Z',[0x3]=  'L',[0x4]=  'G',[0x5]=  'I',[0x6]=  'T',[0x7]=  'Y',
-	[0x8]=  'E',[0x9]=  'O',[0xA]=  'X',[0xB]=  'U',[0xC]=  'K',[0xD]=  'S',[0xE]=  'V',[0xF]=  'N',
+    ['A']=  0x0,['P']=  0x1,['Z']=  0x2,['L']=  0x3,['G']=  0x4,['I']=  0x5,['T']=  0x6,['Y']=  0x7,
+    ['E']=  0x8,['O']=  0x9,['X']=  0xA,['U']=  0xB,['K']=  0xC,['S']=  0xD,['V']=  0xE,['N']=  0xF,
+    [0x0]=  'A',[0x1]=  'P',[0x2]=  'Z',[0x3]=  'L',[0x4]=  'G',[0x5]=  'I',[0x6]=  'T',[0x7]=  'Y',
+    [0x8]=  'E',[0x9]=  'O',[0xA]=  'X',[0xB]=  'U',[0xC]=  'K',[0xD]=  'S',[0xE]=  'V',[0xF]=  'N',
 }
 
 local code_to_patch = function (inputcode)
@@ -41,61 +41,61 @@ local patch_to_code = function (in_patch_data)
     if not in_patch_data["compare"] then
 
         local Xddd = (in_patch_data["address"]) >> 12
-		local Efff = (in_patch_data["address"] & 3840) >> 8
-		local Bccc = (in_patch_data["address"] & 240) >> 4
-		local Deee = (in_patch_data["address"] & 15)
-		local Abbb = (in_patch_data["value"] >> 4)
-		local Faaa = (in_patch_data["value"] & 15)
+        local Efff = (in_patch_data["address"] & 3840) >> 8
+        local Bccc = (in_patch_data["address"] & 240) >> 4
+        local Deee = (in_patch_data["address"] & 15)
+        local Abbb = (in_patch_data["value"] >> 4)
+        local Faaa = (in_patch_data["value"] & 15)
         local  E = Efff & 8
-		local  B = Bccc & 8
-		local  D = Deee & 8
-		local  A = Abbb & 8
-		local  F = Faaa & 8
+        local  B = Bccc & 8
+        local  D = Deee & 8
+        local  A = Abbb & 8
+        local  F = Faaa & 8
         local ddd = Xddd & 7
-		local fff = Efff & 7
-		local ccc = Bccc & 7
-		local eee = Deee & 7
-		local bbb = Abbb & 7
-		local aaa = Faaa & 7
+        local fff = Efff & 7
+        local ccc = Bccc & 7
+        local eee = Deee & 7
+        local bbb = Abbb & 7
+        local aaa = Faaa & 7
         table.insert(tempcode, A | aaa)
-		table.insert(tempcode, B | bbb)
-		table.insert(tempcode,     ccc)
-		table.insert(tempcode, D | ddd)
-		table.insert(tempcode, E | eee)
-		table.insert(tempcode, F | fff)
+        table.insert(tempcode, B | bbb)
+        table.insert(tempcode,     ccc)
+        table.insert(tempcode, D | ddd)
+        table.insert(tempcode, E | eee)
+        table.insert(tempcode, F | fff)
 
     elseif in_patch_data["compare"] then
         local Xddd = (in_patch_data["address"]) >> 12
-		local Efff = (in_patch_data["address"] & 3840) >> 8
-		local Bccc = (in_patch_data["address"] & 240) >> 4
-		local Deee = (in_patch_data["address"] & 15)
-		local Ghhh = (in_patch_data["address"] >> 4)
-		local Fggg = (in_patch_data["address"] & 15)
-		local Abbb = (in_patch_data["value"] >> 4)
-		local Haaa = (in_patch_data["value"] & 15)
-		local E = Efff & 8
-		local B = Bccc & 8
-		local D = Deee & 8
-		local G = Ghhh & 8
-		local F = Fggg & 8
-		local A = Abbb & 8
-		local H = Haaa & 8
-		local ddd = Xddd & 7
-		local fff = Efff & 7
-		local ccc = Bccc & 7
-		local eee = Deee & 7
-		local hhh = Ghhh & 7
-		local ggg = Fggg & 7
-		local bbb = Abbb & 7
-		local aaa = Haaa & 7
-		table.insert(tempcode, A | aaa)
-		table.insert(tempcode, B | bbb)
-		table.insert(tempcode,     ccc)
-		table.insert(tempcode, D | ddd)
-		table.insert(tempcode, E | eee)
-		table.insert(tempcode, F | fff)
-		table.insert(tempcode, G | ggg)
-		table.insert(tempcode, H | hhh)
+        local Efff = (in_patch_data["address"] & 3840) >> 8
+        local Bccc = (in_patch_data["address"] & 240) >> 4
+        local Deee = (in_patch_data["address"] & 15)
+        local Ghhh = (in_patch_data["address"] >> 4)
+        local Fggg = (in_patch_data["address"] & 15)
+        local Abbb = (in_patch_data["value"] >> 4)
+        local Haaa = (in_patch_data["value"] & 15)
+        local E = Efff & 8
+        local B = Bccc & 8
+        local D = Deee & 8
+        local G = Ghhh & 8
+        local F = Fggg & 8
+        local A = Abbb & 8
+        local H = Haaa & 8
+        local ddd = Xddd & 7
+        local fff = Efff & 7
+        local ccc = Bccc & 7
+        local eee = Deee & 7
+        local hhh = Ghhh & 7
+        local ggg = Fggg & 7
+        local bbb = Abbb & 7
+        local aaa = Haaa & 7
+        table.insert(tempcode, A | aaa)
+        table.insert(tempcode, B | bbb)
+        table.insert(tempcode,     ccc)
+        table.insert(tempcode, D | ddd)
+        table.insert(tempcode, E | eee)
+        table.insert(tempcode, F | fff)
+        table.insert(tempcode, G | ggg)
+        table.insert(tempcode, H | hhh)
     end
 
     for _,v in ipairs(tempcode)do
